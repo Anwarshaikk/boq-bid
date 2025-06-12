@@ -4,6 +4,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
+@app.route('/')
+def index():
+    return "BoQ-AI backend is running"
+
 @app.route('/api/hello')
 def hello():
     return {'message': 'Hello from backend'}
