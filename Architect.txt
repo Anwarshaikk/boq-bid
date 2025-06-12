@@ -1,0 +1,41 @@
+you are aware of the project status.
+
+But here are some major changes we need. to understand the context, we should understand the process of BID.
+
+I am a Construction Company, who is in all types of Construction like Commercial, Structural, Government and etc., 
+1. For every Government proposed Project, The Government will provide me some specifications like, 
+	i. The 2d drawings - can be provided by the government or by my in house engineers
+
+	ii. The Item List - List of Items/elements/process required to be installed, used and followed.
+		ex:- excavation work needed, material to be used. work to be done, gov might say there should be 1 Air conditioner/room. Use Cement, use light, waterproofing
+
+	iii. A Rules Book:- Gov will follow a standard on specific material and wants us to apply/use 	the specified one
+		ex:- Item/process specification for excavation whether to blast it or to dig. specific 	cement to be used. process of work, AC type/split or window and company of the AC. specific Grade of cement will be provided. use led/florescent with specific watts. Specific water proofing. 
+
+	iv. Cost Engine:- Usually Gov and us(client) have a set of standards for labour rates, material rates and all other construction costs.
+
+2. Based on all these things Gov will release a Approx. Project Budget costs. say 500cr(inr) and then it calls for BIDs
+
+3. Me as a construction company will 1st allocate a quantity surveyor, where he generates a Bill of Quantities with Gov specific drawings + List of other functional Elements/proceses --> Total Elements present and Their Quantities(count, volume, area etc.,) and then applies the Gov specific rules and cost standards. This Gives us a Precise Project Budget based on Gov Costings. say 400cr. Now the approx was 500cr but the precise was 400cr. Sometimes the Gov will under/over quote budgets.
+
+4. Now my company will repeat the same process with our vendor costs instead of gov standard costs. All the remaining factors remain the same like the drawings, list of materials, Rules. only we will apply our own costs. now the precise project budget will be determined per say 350 cr. 
+
+5. now we will bid for per say 450cr and save a profit of 100cr. 
+
+If we can generate an optimal BID in less amount of time than the competitors we have more chances of winning the BID. 
+
+Now we are Building a BOQ + BID Optimaization Tool
+
+1. we will have the Govt 2d Drawings and the list of items / our own if otherwise. we should use these DWG drawings and the list of items and extract meaningfull information from which we can identify all the elements and their dimensions(count, area, volume, units) in all of the drawings for the project and the list. (currently using python libraries like ezdxf)
+
+2. Gov specific rules should be applied. --> pdf --> it should be able to generate the rules by analysing Gov rules for that specific project. 
+
+3. Costings --> 1st will be done with gov specific and then  client/user specific. 
+
+
+
+1. It should process/accept n number of dwg drawings of a specific project. user should be able to add all the project specified drawings at one place.
+2. and  list of items pdf/image.
+3. it should identify the n number of  drawings as a complete project. it should be able to understand the whole picture(metaphor) 
+4. it needs an BOQ hierarchy for building wise, site wise, floor wise information(BoQ) 
+5. will add more specifications later. 

@@ -1,0 +1,51 @@
+{
+  "rcc_slabs_m2": {
+    "target_layers": ["CONCRETE_SLAB", "SLAB_HATCH", "ARCHITECTURAL RC.ELEMENT HAT"],
+    "entity_type": "HATCH",
+    "measurement_rule": "area",
+    "boq_description": "Reinforced Cement Concrete Slab (M25), 150mm thickness",
+    "boq_unit": "SQM"
+  },
+  "rcc_shear_walls_m2": {
+    "target_layers": ["SHEAR WALL", "SHEARWALL HATCH", "200THK R.C WALL HAT", "SW UPTO GF"],
+    "entity_type": "HATCH",
+    "measurement_rule": "area",
+    "boq_description": "Reinforced Cement Concrete Shear Wall (M25), 200mm thickness",
+    "boq_unit": "SQM"
+  },
+  "brickwork_160mm_m": {
+    "target_layers": ["160 R.C.WALL", "160 R.C. WALL HAT", "A-WALL-INTR"],
+    "entity_type": "LINE",
+    "measurement_rule": "length",
+    "boq_description": "Brickwork in cement mortar 1:6, 160mm thick partition wall",
+    "boq_unit": "M"
+  },
+  "rcc_columns_m2": {
+    "target_layers": ["JKEC COL", "COLUMN_HATCH", "JKEC COL HAT"],
+    "entity_type": "HATCH",
+    "measurement_rule": "area",
+    "boq_description": "Reinforced Cement Concrete Column Footprint Area",
+    "boq_unit": "SQM"
+  },
+  "structural_grid_lines_nos": {
+    "target_layers": ["GRID", "GRID CI", "GIRD CIR"],
+    "entity_type": "LINE",
+    "measurement_rule": "count",
+    "boq_description": "Structural Grid Line Reference",
+    "boq_unit": "Nos."
+  },
+  "deduct_cutouts_m2": {
+    "target_layers": ["CUTOUT", "CUTOUT LINE", "160 WALL OPEING", "160 WALL OPENING LINE"],
+    "entity_type": "POLYLINE",
+    "measurement_rule": "area",
+    "boq_description": "Deduction for Opening/Cutout in RCC Slab",
+    "boq_unit": "SQM"
+  },
+  "window_units_nos": {
+    "target_layers": ["WIN", "A-GLAZ", "WINDOWS"],
+    "entity_type": "INSERT",
+    "measurement_rule": "count",
+    "boq_description": "Aluminum Window Unit Assembly",
+    "boq_unit": "Nos."
+  }
+}

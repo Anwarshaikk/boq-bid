@@ -1,0 +1,25 @@
+{
+  "materials": {
+    "concrete": [
+      { "vendor": "Allied Concrete", "price": 150, "unit": "per SQFT" },
+      { "vendor": "City Cement", "price": 155, "unit": "per SQFT" },
+      { "vendor": "BuildRight", "price": 160, "unit": "per SQFT" }
+    ],
+    "drywall": [
+      { "vendor": "Pro Walls", "price": 2.5, "unit": "per LFT" },
+      { "vendor": "BuildRight", "price": 2.75, "unit": "per LFT" }
+    ],
+    "windows": [
+      { "vendor": "Apex Windows", "price": 350, "unit": "per No." },
+      { "vendor": "Crystal Clear", "price": 375, "unit": "per No." },
+      { "vendor": "ViewMax", "price": 400, "unit": "per No." }
+    ]
+  },
+  "item_to_material_map": {
+    "Cast-in-Place Concrete Slab, 6-inch thickness": "concrete",
+    "Reinforced Concrete Shear Wall, 8-inch thickness": "concrete",
+    "Interior Partition Wall, Stud and Drywall Assembly": "drywall",
+    "Structural Concrete Column Footprint": "concrete",
+    "Window Unit Assembly": "windows"
+  }
+}
