@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-// Base API URL is injected via docker-compose or defaults to localhost
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8080';
 
-/**
- * Upload component supporting multiple DWG/DXF files or a ZIP archive.
- * Renders per-file progress and polls backend job status.
- */
 export default function Upload() {
   const [jobs, setJobs] = useState([]); // [{id,name,status,progress}]
 
@@ -62,17 +57,30 @@ export default function Upload() {
       axios
         .get(`${API_BASE}/status/${id}`)
         .then((res) => {
-          const { status } = res.data;
+          const { status, result } = res.data;
+
+          let displayStatus = status;
+          if (status === 'finished' && result) {
+            displayStatus = 'finished';
+          } else if (status === 'failed') {
+            displayStatus = 'failed';
+          }
+
           setJobs((prev) =>
-            prev.map((j) => (j.id === id ? { ...j, status } : j))
+            prev.map((j) =>
+              j.id === id ? { ...j, status: displayStatus } : j
+            )
           );
-          if (status !== 'queued' && status !== 'started') {
+
+          if (displayStatus !== 'queued' && displayStatus !== 'started') {
             clearInterval(timer);
           }
         })
         .catch(() => {
           setJobs((prev) =>
-            prev.map((j) => (j.id === id ? { ...j, status: 'failed' } : j))
+            prev.map((j) =>
+              j.id === id ? { ...j, status: 'failed' } : j
+            )
           );
           clearInterval(timer);
         });

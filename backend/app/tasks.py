@@ -4,6 +4,7 @@ import os
 
 def process_dwg(file_path):
     """Mock DWG parsing and return a Bill of Quantities."""
+    print(f"🛠️ Worker is processing: {file_path}", flush=True)
     try:
         print(f"📂 Processing file: {file_path}")
         time.sleep(2)
