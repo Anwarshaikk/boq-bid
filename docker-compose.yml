@@ -11,12 +11,16 @@ services:
       - "8080:8080"
     depends_on:
       - redis
+    volumes:
+      - ./backend/drawings:/app/drawings
 
   worker:
     build: ./backend
     command: ["python", "app/worker.py"]
     depends_on:
       - redis
+    volumes:
+      - ./backend/drawings:/app/drawings
 
   frontend:
     build: ./frontend
