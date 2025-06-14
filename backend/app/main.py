@@ -22,20 +22,21 @@ def hello():
 
 @app.route('/api/boq', methods=['POST'])
 def create_boq():
-    """Accepts a DWG file upload and enqueues processing."""
     uploaded_file = request.files.get('file')
     if not uploaded_file:
+        print("❌ No file uploaded.")
         return jsonify({'error': 'No file provided'}), 400
 
-    # Save the uploaded file to a temporary location
-    temp_dir = os.getenv('UPLOAD_DIR', '/tmp')
-    os.makedirs(temp_dir, exist_ok=True)
-    file_path = os.path.join(temp_dir, uploaded_file.filename)
-    uploaded_file.save(file_path)
+    # Save to disk for processing
+    save_path = os.path.join("drawings", uploaded_file.filename)
+    uploaded_file.save(save_path)
+    print(f"📥 File saved: {save_path}")
 
-    # Enqueue the processing job
-    job = queue.enqueue(process_dwg, file_path)
-    return jsonify({'job_id': job.get_id()}), 202
+    # Enqueue the job
+    job = queue.enqueue(process_dwg, save_path)
+    print(f"🚀 Job enqueued: {job.id}")
+    return jsonify({"job_id": job.id}), 202
+
 
 
 @app.route('/status/<job_id>')
