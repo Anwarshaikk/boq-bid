@@ -4,6 +4,7 @@ import { File, Loader2, X, UploadCloud, Download, FileText } from 'lucide-react'
 import { Toaster, toast } from 'sonner';
 // Import both functions from your api service
 import { generateBOQ, downloadExcelWithCost } from './services/api.js';
+import Upload from './Upload.jsx';
 
 export default function App() {
   const [file, setFile] = useState(null);
@@ -90,6 +91,7 @@ export default function App() {
   // (The rest of the return statement with the UI is the same and correct)
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-4 sm:p-6">
+      <Upload />
       <div className="w-full max-w-4xl mx-auto space-y-6">
         {/* Input Section */}
         <div className="bg-white shadow-xl rounded-xl p-8">
