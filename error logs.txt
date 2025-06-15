@@ -1,0 +1,91 @@
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:50:34] "POST /api/upload_drawing HTTP/1.1" 202 -
+worker-1    | 12:50:34 default: tasks.process_dwg('/app/uploads/ST-10-IISC-WHB-LAY. & R.C. DET.OF SECOND FLOOR-SLABS & BEAMS-...) (fdfe0abd-f69a-4502-beb9-31fdcf8f69e4)
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:50:38] "GET /status/fdfe0abd-f69a-4502-beb9-31fdcf8f69e4 HTTP/1.1" 200 -
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:50:41] "GET /status/fdfe0abd-f69a-4502-beb9-31fdcf8f69e4 HTTP/1.1" 200 -
+worker-1    | 🧠 Loading Sentence Transformer model...
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:50:44] "GET /status/fdfe0abd-f69a-4502-beb9-31fdcf8f69e4 HTTP/1.1" 200 -
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:50:47] "GET /status/fdfe0abd-f69a-4502-beb9-31fdcf8f69e4 HTTP/1.1" 200 -
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:50:50] "GET /status/fdfe0abd-f69a-4502-beb9-31fdcf8f69e4 HTTP/1.1" 200 -
+worker-1    | ✅ Sentence Transformer model loaded.
+worker-1    | 🛠️ Worker starting quantity take-off on: ST-10-IISC-WHB-LAY. & R.C. DET.OF SECOND FLOOR-SLABS & BEAMS-A1(S.V)-01.11.22.dxf
+worker-1    | 12:50:50 [Job fdfe0abd-f69a-4502-beb9-31fdcf8f69e4]: exception raised while executing (tasks.process_dwg)
+worker-1    | Traceback (most recent call last):
+worker-1    |   File "/usr/local/lib/python3.11/site-packages/rq/worker.py", line 1643, in perform_job
+worker-1    |     return_value = job.perform()
+worker-1    |                    ^^^^^^^^^^^^^
+worker-1    |   File "/usr/local/lib/python3.11/site-packages/rq/job.py", line 1359, in perform
+worker-1    |     self._result = self._execute()
+worker-1    |                    ^^^^^^^^^^^^^^^
+worker-1    |   File "/usr/local/lib/python3.11/site-packages/rq/job.py", line 1393, in _execute
+worker-1    |     result = self.func(*self.args, **self.kwargs)
+worker-1    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+worker-1    |   File "/app/tasks.py", line 59, in process_dwg
+worker-1    |     doc = ezdxf.readfile(file_path)
+worker-1    |           ^^^^^^^^^^^^^^^^^^^^^^^^^
+worker-1    |   File "/usr/local/lib/python3.11/site-packages/ezdxf/filemanagement.py", line 138, in readfile
+worker-1    |     if is_binary_dxf_file(filename):
+worker-1    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+worker-1    |   File "/usr/local/lib/python3.11/site-packages/ezdxf/lldxf/validator.py", line 316, in is_binary_dxf_file
+worker-1    |     with open(filename, "rb") as fp:
+worker-1    |          ^^^^^^^^^^^^^^^^^^^^
+worker-1    | FileNotFoundError: [Errno 2] No such file or directory: '/app/uploads/ST-10-IISC-WHB-LAY. & R.C. DET.OF SECOND FLOOR-SLABS & BEAMS-A1(S.V)-01.11.22.dxf'
+worker-1    |
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:50:53] "GET /status/fdfe0abd-f69a-4502-beb9-31fdcf8f69e4 HTTP/1.1" 200 -
+
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:50:53] "GET /status/fdfe0abd-f69a-4502-beb9-31fdcf8f69e4 HTTP/1.1" 200 -
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:51:47] "POST /api/process_agreement HTTP/1.1" 202 -
+worker-1    | 12:51:47 default: tasks.process_agreement_doc('/app/uploads/List Of Materials Sample.pdf') (fc925257-b927-4311-893e-b7e70b4b38c2)
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:51:50] "GET /status/fc925257-b927-4311-893e-b7e70b4b38c2 HTTP/1.1" 200 -
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:51:53] "GET /status/fc925257-b927-4311-893e-b7e70b4b38c2 HTTP/1.1" 200 -
+worker-1    | 🧠 Loading Sentence Transformer model...
+worker-1    | ✅ Sentence Transformer model loaded.
+worker-1    | 🤖 AI processing Agreement Document: List Of Materials Sample.pdf
+worker-1    | 12:51:55 [Job fc925257-b927-4311-893e-b7e70b4b38c2]: exception raised while executing (tasks.process_agreement_doc)
+worker-1    | Traceback (most recent call last):
+worker-1    |   File "/usr/local/lib/python3.11/site-packages/rq/worker.py", line 1643, in perform_job
+worker-1    |     return_value = job.perform()
+worker-1    |                    ^^^^^^^^^^^^^
+worker-1    |   File "/usr/local/lib/python3.11/site-packages/rq/job.py", line 1359, in perform
+worker-1    |     self._result = self._execute()
+worker-1    |                    ^^^^^^^^^^^^^^^
+worker-1    |   File "/usr/local/lib/python3.11/site-packages/rq/job.py", line 1393, in _execute
+worker-1    |     result = self.func(*self.args, **self.kwargs)
+worker-1    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+worker-1    |   File "/app/tasks.py", line 82, in process_agreement_doc
+worker-1    |     with pdfplumber.open(file_path) as pdf:
+worker-1    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+worker-1    |   File "/usr/local/lib/python3.11/site-packages/pdfplumber/pdf.py", line 98, in open
+worker-1    |     stream = open(path_or_fp, "rb")
+worker-1    |              ^^^^^^^^^^^^^^^^^^^^^^
+worker-1    | FileNotFoundError: [Errno 2] No such file or directory: '/app/uploads/List Of Materials Sample.pdf'
+worker-1    |
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:51:56] "GET /status/fc925257-b927-4311-893e-b7e70b4b38c2 HTTP/1.1" 200 -
+
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:51:56] "GET /status/fc925257-b927-4311-893e-b7e70b4b38c2 HTTP/1.1" 200 -
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:52:30] "POST /api/process_rules HTTP/1.1" 202 -
+worker-1    | 12:52:30 default: tasks.process_rules_doc('/app/uploads/Sample Specification doc.pdf') (38300928-5835-4039-b9b2-f966bcad6192)
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:52:33] "GET /status/38300928-5835-4039-b9b2-f966bcad6192 HTTP/1.1" 200 -
+worker-1    | 🧠 Loading Sentence Transformer model...
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:52:36] "GET /status/38300928-5835-4039-b9b2-f966bcad6192 HTTP/1.1" 200 -
+worker-1    | ✅ Sentence Transformer model loaded.
+worker-1    | 룰 AI processing Rules/Standard Document: Sample Specification doc.pdf
+worker-1    | 12:52:37 [Job 38300928-5835-4039-b9b2-f966bcad6192]: exception raised while executing (tasks.process_rules_doc)
+worker-1    | Traceback (most recent call last):
+worker-1    |   File "/usr/local/lib/python3.11/site-packages/rq/worker.py", line 1643, in perform_job
+worker-1    |     return_value = job.perform()
+worker-1    |                    ^^^^^^^^^^^^^
+worker-1    |   File "/usr/local/lib/python3.11/site-packages/rq/job.py", line 1359, in perform
+worker-1    |     self._result = self._execute()
+worker-1    |                    ^^^^^^^^^^^^^^^
+worker-1    |   File "/usr/local/lib/python3.11/site-packages/rq/job.py", line 1393, in _execute
+worker-1    |     result = self.func(*self.args, **self.kwargs)
+worker-1    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+worker-1    |   File "/app/tasks.py", line 115, in process_rules_doc
+worker-1    |     with pdfplumber.open(file_path) as pdf:
+worker-1    |          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+worker-1    |   File "/usr/local/lib/python3.11/site-packages/pdfplumber/pdf.py", line 98, in open
+worker-1    |     stream = open(path_or_fp, "rb")
+worker-1    |              ^^^^^^^^^^^^^^^^^^^^^^
+worker-1    | FileNotFoundError: [Errno 2] No such file or directory: '/app/uploads/Sample Specification doc.pdf'
+worker-1    |
+backend-1   | 172.18.0.1 - - [15/Jun/2025 12:52:39] "GET /status/38300928-5835-4039-b9b2-f966bcad6192 HTTP/1.1" 200 -

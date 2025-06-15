@@ -13,14 +13,21 @@ services:
       - redis
     volumes:
       - ./backend/drawings:/app/drawings
+      # Mount a volume for PDF documents
+      - ./backend/docs:/app/docs
 
   worker:
     build: ./backend
-    command: ["python", "app/worker.py"]
+    command: ["python", "worker.py"]
+    environment:
+      # Your Gemini API Key
+      - GEMINI_API_KEY=AIzaSyBkTZec45xKznqxT-x-pAX9v9Ow6t3wDC4
     depends_on:
       - redis
     volumes:
       - ./backend/drawings:/app/drawings
+      # Mount the same volume for the worker
+      - ./backend/docs:/app/docs
 
   frontend:
     build: ./frontend
