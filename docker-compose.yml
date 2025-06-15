@@ -1,4 +1,3 @@
-version: '3'
 services:
   redis:
     image: redis:7
@@ -6,34 +5,49 @@ services:
       - "6379:6379"
 
   backend:
-    build: ./backend
+    build:
+      # This points to the correct folder containing your Python code and Dockerfile
+      context: ./backend/app
+    command: ["flask", "run", "--host=0.0.0.0", "--port=8080"]
+    working_dir: /app
     ports:
       - "8080:8080"
+    environment:
+      - FLASK_APP=main:app
+      - FLASK_DEBUG=1
+      - REDIS_HOST=redis
+      - GEMINI_API_KEY=AIzaSyBkTZec45xKznqxT-x-pAX9v9Ow6t3wDC4
+    volumes:
+      # This correctly mounts your code for live updates
+      - ./backend/app:/app
     depends_on:
       - redis
-    volumes:
-      - ./backend/drawings:/app/drawings
-      # Mount a volume for PDF documents
-      - ./backend/docs:/app/docs
 
   worker:
-    build: ./backend
+    build:
+      # The worker uses the same correct build context
+      context: ./backend/app
     command: ["python", "worker.py"]
+    working_dir: /app
     environment:
-      # Your Gemini API Key
+      - REDIS_HOST=redis
       - GEMINI_API_KEY=AIzaSyBkTZec45xKznqxT-x-pAX9v9Ow6t3wDC4
+    volumes:
+      - ./backend/app:/app
     depends_on:
       - redis
-    volumes:
-      - ./backend/drawings:/app/drawings
-      # Mount the same volume for the worker
-      - ./backend/docs:/app/docs
 
   frontend:
     build: ./frontend
+    command: ["npm", "run", "dev"]
+    working_dir: /app
     ports:
       - "5173:5173"
     environment:
       - VITE_API_URL=http://backend:8080
+    volumes:
+      - ./frontend:/app
+      # This is crucial to prevent the container's node_modules from being overwritten
+      - /app/node_modules
     depends_on:
       - backend
