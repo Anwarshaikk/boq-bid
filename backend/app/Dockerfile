@@ -1,22 +1,21 @@
 # Use an official Python runtime as a parent image
 FROM python:3.11-slim
 
-# Set the working directory
+# Set the working directory for the application
 WORKDIR /app
 
-# Since requirements.txt is now in the same folder as the Dockerfile,
-# this simple copy command works perfectly.
+# Copy dependency file first to leverage Docker cache
 COPY requirements.txt .
 
-# Install dependencies
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy all other files (main.py, worker.py, etc.) from the current
-# directory into the container's /app directory.
+# Copy the rest of the application source code
 COPY . .
 
-# Expose the port the app runs on
+# Default Flask entrypoint
+ENV FLASK_APP=main:app
+
 EXPOSE 8080
 
-# Set the default command to run the application
 CMD ["flask", "run", "--host=0.0.0.0", "--port=8080"]

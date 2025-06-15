@@ -14,7 +14,5 @@ COPY . .
 # Expose the port Vite runs on
 EXPOSE 5173
 
-# This is the corrected command. It's more direct and reliable.
-# The host and port will be configured from the vite.config.js or
-# passed via the npm script itself.
-CMD ["npm", "run", "dev"]
+# Run the development server and listen on all interfaces
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "5173"]
