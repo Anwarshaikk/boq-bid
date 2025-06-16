@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     python3.9 \
     python3-pip \
+    autotools-dev \
     && rm -rf /var/lib/apt/lists/*
 
 # 2. Download and install the ODA File Converter from a reliable .tar.gz archive.
