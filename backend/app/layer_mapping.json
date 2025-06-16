@@ -1,0 +1,37 @@
+{
+  "defaults": {
+    "floor_height_m": 3.0
+  },
+  "categories": {
+    "walls": {
+      "layers": ["A-WALL-EXT", "A-WALL-INT", "STRUCT-WALL", "WALLS"],
+      "description": "Concrete Wall",
+      "calculation_method": "length_x_height"
+    },
+    "columns": {
+      "layers": ["S-COLUMN-CONC", "COLUMNS", "STRUCT-COL"],
+      "description": "RCC Column",
+      "calculation_method": "area_x_height"
+    },
+    "beams": {
+      "layers": ["S-BEAM", "BEAMS", "STRUCT-BEAM"],
+      "description": "RCC Beam",
+      "calculation_method": "length_x_width"
+    },
+    "slabs": {
+      "layers": ["S-SLAB", "SLABS", "STRUCT-FLOOR"],
+      "description": "RCC Slab",
+      "calculation_method": "area"
+    },
+    "doors": {
+      "layers": ["A-DOOR", "DOORS"],
+      "description": "Door Assembly",
+      "calculation_method": "count"
+    },
+    "windows": {
+      "layers": ["A-GLAZ-EXT", "WINDOWS"],
+      "description": "Window Assembly",
+      "calculation_method": "count"
+    }
+  }
+}

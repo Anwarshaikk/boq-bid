@@ -1,0 +1,18 @@
+# Python Web Framework and Job Queue
+flask
+flask-cors
+rq
+redis
+
+# Core BoQ and Data Processing Libraries
+ezdxf
+pdfplumber
+google-generativeai
+sentence-transformers
+openpyxl
+
+# Strategic Intelligence Libraries
+requests
+beautifulsoup4
+duckduckgo-search
+urllib3
