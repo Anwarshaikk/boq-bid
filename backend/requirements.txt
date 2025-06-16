@@ -1,18 +1,30 @@
 # Python Web Framework and Job Queue
-flask
-flask-cors
-rq
-redis
+flask==2.3.3
+flask-cors==4.0.0
+rq==1.15.1
+redis==5.0.1
 
 # Core BoQ and Data Processing Libraries
 ezdxf
 pdfplumber
 google-generativeai
 sentence-transformers
-openpyxl
+openpyxl==3.1.2
 
 # Strategic Intelligence Libraries
-requests
-beautifulsoup4
+requests==2.31.0
+beautifulsoup4==4.12.2
 duckduckgo-search
 urllib3
+
+# Additional Libraries
+python-dotenv==1.0.0
+werkzeug==2.3.7
+gunicorn==21.2.0
+pytest==7.4.2
+pytest-cov==4.1.0
+black==23.9.1
+flake8==6.1.0
+mypy==1.5.1
+python-magic==0.4.27
+lxml==4.9.3
